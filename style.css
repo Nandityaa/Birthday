@@ -1,0 +1,382 @@
+body {
+    margin: 0;
+    background: #0d0d0d;
+    color: pink;
+    font-family: 'Segoe UI', sans-serif;
+    position: relative;
+  }
+  
+  .container {
+    position: relative;
+    z-index: 2;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* tidak center total agar tetap stabil */
+    align-items: center;
+    text-align: center;
+    padding-top: 10vh;
+    overflow: hidden;
+  }
+  
+  h1 {
+    font-size: 3em;
+    text-shadow: 0 0 15px hotpink;
+  }
+
+  #m {
+    position: relative;
+    bottom: 4vh;
+    font-size: 2em;
+    text-shadow: 0 0 15px hotpink;
+  }
+
+  .container #hero{
+    position: relative;
+    bottom: 6.5vh;
+  }
+  
+  p {
+    font-size: 1.2em;
+    max-width: 600px;
+    text-shadow: 0 0 10px #ff66cc;
+  }
+  
+  .photo img {
+    max-width: 400px;
+    border-radius: 40px;
+    box-shadow: 0 0 15px hotpink;
+    margin-bottom: 5vh;
+  }
+  
+  .fly-zone {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  
+  .fly {
+    position: absolute;
+    width: 40px;
+    opacity: 0.8;
+    bottom: -60px;
+    animation: floatUp 10s linear infinite;
+    filter: drop-shadow(0 0 10px hotpink);
+  }
+  
+  .fly.heart {
+    width: 30px;
+    filter: drop-shadow(0 0 8px deeppink);
+  }
+  
+  .fly.star {
+    width: 25px;
+    filter: drop-shadow(0 0 6px white);
+  }
+  
+  .fly.confetti {
+    width: 20px;
+    filter: drop-shadow(0 0 5px #ffccff);
+  }
+  
+  /* Delay animasi + posisi horizontal */
+  .delay1 { left: 10%; animation-delay: 0s; }
+  .delay2 { left: 25%; animation-delay: 1s; }
+  .delay3 { left: 40%; animation-delay: 2s; }
+  .delay4 { left: 55%; animation-delay: 3s; }
+  .delay5 { left: 70%; animation-delay: 4s; }
+  .delay6 { left: 85%; animation-delay: 5s; }
+  .delay7 { left: 15%; animation-delay: 2.5s; }
+  .delay8 { left: 35%; animation-delay: 4.5s; }
+  .delay9 { left: 60%; animation-delay: 1.5s; }
+  .delay10 { left: 80%; animation-delay: 3.5s; }
+  
+  @keyframes floatUp {
+    0% {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-210vh) scale(1.2);
+      opacity: 0;
+    }
+  }
+
+  .birthday-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20vh;
+  }
+  
+  /* Kartu Awal */
+  .card {
+    background: linear-gradient(145deg, #ff7eb9, #ff65a3);
+    padding: 30px 50px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(255, 105, 180, 0.7);
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(255, 105, 180, 1);
+  }
+  
+  /* Isi Setelah Klik */
+  .content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(50px);
+    transition: all 0.8s ease;
+  }
+  
+  .content img {
+    width: 300px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(255, 105, 180, 0.7);
+  }
+  
+  .wish-text {
+    max-width: 400vw;
+    font-size: 18px;
+    text-align: justify;
+  }
+
+  .wish-text h2 {
+    text-shadow: 0 0 15px hotpink;
+  }
+
+  .wish-text p {
+    text-shadow: 0 0 10px #ff66cc;
+    text-align: justify;
+  }
+
+  /* Saat Aktif */
+  .content.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .confetti-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 99;
+  }
+  
+  .confetti {
+    width: 10px;
+    height: 10px;
+    background-color: #f06292;
+    position: absolute;
+    animation: fall 2s linear forwards;
+    opacity: 0.8;
+  }
+  
+  @keyframes fall {
+    0% {
+      transform: translateY(0) rotate(0deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(400px) rotate(360deg);
+      opacity: 0;
+    }
+  }  
+  
+  @keyframes flicker {
+    0% { transform: scale(1) translateX(-50%); }
+    50% { transform: scale(1.2) translateX(-50%); }
+    100% { transform: scale(1) translateX(-50%); }
+  }
+  
+  .blow-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #ff69b4;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: background 0.3s;
+  }
+  
+  .blow-btn:hover {
+    background: #ff1493;
+  }
+
+  .gallery-section {
+    text-align: center;
+    padding: 20px;
+    margin-top: 10vh;
+}
+
+.gallery-section h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    padding: 20px;
+}
+
+.gallery-item {
+    width: 100%;
+    aspect-ratio: 4 / 3; /* Menjaga rasio gambar */
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.gallery-item img:hover {
+    filter: grayscale(0%);
+    transform: scale(1.05);
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  max-width: 80%;
+  max-height: 80%;
+  border-radius: 8px;
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+}
+  
+.confession {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.confession .buttons {
+  margin-top: 20px;
+  position: relative;
+  height: 200px; /* biar tombol bisa lari-lari */
+}
+
+.confession button {
+  padding: 10px 20px;
+  font-size: 16px;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 8px;
+  border: none;
+  background-color: #ffb6c1;
+  transition: 0.3s;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+  /* Responsif */
+  @media (max-width: 768px) {
+
+    .confession h2 {
+      font-size: 20px;
+    }
+  
+    .confession p {
+      font-size: 12px;
+    }
+  
+    .confession button {
+      font-size: 13px;
+      padding: 10px;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      position: relative;
+    }
+
+    #hero {
+      font-size: 15px;
+    }
+
+    .content {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .content img {
+      width: 80%; /* Lebih kecil biar pas di HP */
+    }
+  
+    .wish-text {
+      max-width: 90vw;
+      font-size: 10px;
+      text-align: center;
+    }
+  
+    .wish-text p {
+      text-align: justify;
+    }
+    .card {
+      width: 27vh;
+      height: 22vh;
+    }
+
+    .cake-blow-container{
+      width: 150px;
+    }
+
+    .photo img {
+      max-width: 220px;
+      margin-bottom: 7vh;
+      border-radius: none;
+    }
+
+    .photos {
+      max-width: 250px;
+    }
+    
+    .gallery {
+      grid-template-columns: repeat(1, 1fr);
+  }
+  }  
